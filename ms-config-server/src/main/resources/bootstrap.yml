@@ -1,0 +1,6 @@
+
+server:
+  port: ${port:8662}
+spring:
+  application:
+    name: ms-config-server
