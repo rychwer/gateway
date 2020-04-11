@@ -1,0 +1,44 @@
+version: '3.3'
+services:
+
+  
+    spring-boot-eureka-container:
+        build: ./ms-discovery
+        ports:
+          - 8761:8761
+        expose:
+          - "8761"
+        healthcheck:
+          test: ["CMD","http://localhost:8761/actuator/health"]
+        restart: on-failure:5
+
+    spring-boot-config-server-container:
+        build: ./ms-config-server
+        links:
+            - spring-boot-eureka-container:spring-boot-eureka-container
+        ports:
+            - 8662:8662
+        expose:
+            - "8662"
+        healthcheck:
+            test: ["CMD","http://localhost:8761/actuator/health"]
+        restart: on-failure:5 
+        depends_on:
+            - spring-boot-eureka-container
+
+    spring-boot-zuul-proxy-docker-container:
+        build: ./ms-gateway
+        links:
+            - spring-boot-eureka-container:spring-boot-eureka-container
+        ports:
+            - 8081:8081
+        expose:
+            - "8081"
+        healthcheck:
+            test: ["CMD","http://localhost:8081/actuator/health"]
+        restart: on-failure:5
+        depends_on:
+            - spring-boot-eureka-container
+
+networks:
+    spring-cloud-network:

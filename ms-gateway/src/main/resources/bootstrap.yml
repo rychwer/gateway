@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: ms-geteway
+  cloud:
+    config:
+      discovery:
+        service-id: ms-config-server
+        enabled: true

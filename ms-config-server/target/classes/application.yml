@@ -2,13 +2,11 @@ spring:
   cloud:
     config:
       server:
-        git:
-          uri: https://github.com/thukabjj/ms-config-properties/
-          username: thukabjj
-          password:
-          label: master
-          searchPaths:
-            - '/{application}/{profile}'
+        native:
+          search-locations: classpath:/project/{application}/{profile}
+  profiles:
+    active: native
+
 management:
   security:
     enabled: false
