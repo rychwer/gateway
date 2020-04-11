@@ -10,7 +10,7 @@ spring:
     name: ms-gateway
 
 server:
-  port: ${port:8081}
+  port: ${port:8883}
 
 management:
   endpoints:
