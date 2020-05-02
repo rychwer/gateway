@@ -1,5 +1,6 @@
-server:
-  port: ${port:8761}
 spring:
   application:
     name: ms-discovery
+  cloud:
+    config:
+      uri: http://localhost:8001
