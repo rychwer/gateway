@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/oauth2_jwt?createDatabaseIfNotExist=true&useUnicode=yes&characterEncoding=UTF-8&useLegacyDatetimeCode=false&serverTimezone=UTC
+    url: jdbc:mysql://mysql_mysqlsrv_1:3306/oauth2_jwt?createDatabaseIfNotExist=true&useUnicode=yes&characterEncoding=UTF-8&useLegacyDatetimeCode=false&serverTimezone=UTC
     username: root
     password: MySql2019!
   jpa:
@@ -26,9 +26,8 @@ security:
 
 eureka:
   instance:
-    hostname: localhost
-    port: 8002
-    prefer-ip-address: true
+    hostname: ${EUREKA_HOSTNAME}
+    port: ${EUREKA_PORT}
   client:
     registerWithEureka: true
     fetchRegistry: true

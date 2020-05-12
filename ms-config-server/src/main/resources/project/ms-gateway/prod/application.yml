@@ -3,8 +3,8 @@ server:
 
 eureka:
   instance:
-    hostname: localhost
-    port: 9002
+    hostname: ${EUREKA_HOSTNAME}
+    port: ${EUREKA_PORT}
   client:
     registerWithEureka: true
     fetchRegistry: true
